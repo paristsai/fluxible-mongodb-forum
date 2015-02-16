@@ -17,7 +17,8 @@ module.exports = {
 			});
 		} else {
 			var page = params.page || 0;
-			topic.find({}, {skip: 10 * page, limit: 10}, function(err, results) {
+			topic.find({}, {skip: 10 * page, limit: 10, fields: {content:0}},function(err, results) {
+				console.log(results);
 				callback(null, results);
 			});	
 		}
