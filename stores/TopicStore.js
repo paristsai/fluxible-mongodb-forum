@@ -6,6 +6,7 @@ module.exports = createStore({
     storeName: 'TopicStore',
     handlers: {
         'RECEIVE_TOPIC_SUCCESS': '_receiveTopic',
+        'RECEIVE_TOPICS_SUCCESS': '_receiveTopics',
         'CREATE_TOPIC_START': '_createTopicStart',
         'CREATE_TOPIC_FAILURE': '_createTopicFailure',
         'CREATE_TOPIC_SUCCESS': '_createTopicSuccess',
@@ -15,12 +16,17 @@ module.exports = createStore({
         'TOGGLE_ALL_TOPIC_SUCCESS': '_receiveTopics'
     },
     initialize: function () {
-        this.topic = [];
+        this.topic = {};
+        this.topics = [];
     },
     _receiveTopic: function (topic) {
         this.topic = topic;
         this.emitChange();
     },
+    _receiveTopics: function (topics) {
+        this.topics = topics;
+        this.emitChange();
+    },    
     _createTopicStart: function (topic) {
         this.topic.push(topic);
         this.emitChange();
@@ -62,8 +68,11 @@ module.exports = createStore({
 
         this.emitChange();
     },
-    getAll: function () {
+    getPost: function () {
         return this.topic;
+    },
+    getAll: function () {
+        return this.topics;
     },
     createTopic: function(details) {
         return {
@@ -76,10 +85,12 @@ module.exports = createStore({
     },
     dehydrate: function () {
         return {
-            topic: this.topic
+            topic: this.topic,
+            topics: this.topics
         };
     },
     rehydrate: function (state) {
         this.topic = state.topic;
+        this.topics = state.topics;
     }
 });

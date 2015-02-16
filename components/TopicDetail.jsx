@@ -15,15 +15,20 @@ var TopicDetail = React.createClass({
     },
     getState: function () {
     	return {
-    		post: this.getStore(TopicStore).getAll()
+    		post: this.getStore(TopicStore).getPost()
     	};
     },
+    _onChange: function() {
+        this.setState(this.getState());
+    },
     render: function() {
-    	console.log(this.state.post);
+        console.log(this.state);
         return (
-        	<div>this.state.post[0].title}</div>
-            // <h1>{this.state.post.title}</h1>
-            // <h2>{this.state.post.content}</h2>
+            <div>
+        	   <h1>{this.state.post.title}</h1>
+               <h2>{"author: " + this.state.post.name}</h2>
+               <h3>{this.state.post.content}</h3>
+            </div>
         );
     }
 });

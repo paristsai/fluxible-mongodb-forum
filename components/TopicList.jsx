@@ -1,7 +1,9 @@
 'use strict';
 var React = require('react');
 var FluxibleMixin = require('fluxible').Mixin;
+// var RouterMixin = require('flux-router-component').RouterMixin;
 var TopicItem = require('./TopicItem');
+var NavLink = require('flux-router-component').NavLink;
 var TopicStore = require('../stores/TopicStore');
 
 var TopicList = React.createClass({
@@ -26,13 +28,12 @@ var TopicList = React.createClass({
     	var postsArray = this.state.post;
     	var Topics = postsArray.map(function(post) {
 	        return (
-                // <NavLink href={post.id} key={post.id}>
-                // <NavLink key={post.id}>
+                <NavLink href= {"/topic/" + post.id} key={post.id}>
     	            <TopicItem
     	            	post={post}
     	            	key={post.id}
     	            />
-                // </NavLink>
+                </NavLink>
 	        );    		
     	}, this);
 		

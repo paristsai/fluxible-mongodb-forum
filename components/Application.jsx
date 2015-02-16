@@ -3,7 +3,7 @@ var React = require('react');
 var Nav = require('./Nav.jsx');
 var Home = require('./Home.jsx');
 var About = require('./About.jsx');
-// var TopicDetail = require('./TopicDetail.jsx');
+var TopicDetail = require('./TopicDetail.jsx');
 var TopicList = require('./TopicList.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
@@ -38,9 +38,9 @@ var Application = React.createClass({
             case 'pages':
                 output = <TopicList/>;
                 break;
-            // case 'topic':
-            //     output = <TopicDetail/>;
-            //     break;
+            case 'topic':
+                output = <TopicDetail/>;
+                break;
         }
         return (
             <div>

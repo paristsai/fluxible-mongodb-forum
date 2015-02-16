@@ -6,7 +6,7 @@ module.exports = function getPageAction(context, payload, done) {
 		if (err) {
 			console.log('error');
 		} else {
-			context.dispatch('RECEIVE_TOPIC_SUCCESS', results);
+			context.dispatch('RECEIVE_TOPICS_SUCCESS', results);
 		}
 		done();
 	});

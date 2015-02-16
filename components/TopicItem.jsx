@@ -5,7 +5,9 @@ var TopicItem = React.createClass({
 
     render: function() {
         return (
-            <li>{this.props.post.title}</li>
+            <li>
+            	{this.props.post.title}
+            </li>
         );
     }
 });

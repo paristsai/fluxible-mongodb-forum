@@ -11,14 +11,13 @@ module.exports = {
 		
 		// //tag, sort...
 		if (params.id) {
-			var key = {id: params.id};
-			topic.find(key, function(err, results) {
+			var key = {id: parseInt(params.id)};
+			topic.findOne(key, function(err, results) {
 				callback(null, results);
 			});
 		} else {
 			var page = params.page || 0;
 			topic.find({}, {skip: 10 * page, limit: 10}, function(err, results) {
-				console.log(results);
 				callback(null, results);
 			});	
 		}

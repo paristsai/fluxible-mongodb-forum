@@ -27,6 +27,7 @@ var ApplicationStore = createStore({
         this.currentPageName = pageName;
         this.currentPage = page;
         this.currentRoute = route;
+        // console.log(this);
         this.emitChange();
     },
     updatePageTitle: function (title) {
